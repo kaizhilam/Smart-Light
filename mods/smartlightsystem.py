@@ -16,9 +16,10 @@ from .paho.mqtt import client as mqtt
 
 
 # Change value here to test scalling
-FLOORHUB = 2
-ROOMHUB = 3
-LIGHTBULB = 4
+# Note that you will NOT be running this parallel. And too much might freeze your computer as it is just a simulation
+FLOORHUB = 4
+ROOMHUB = 2
+LIGHTBULB = 3
 
 
 SCHEDULETIMER = 100
@@ -38,7 +39,7 @@ def Start(instance):
     devices.append(cloud)
     standard.AddLabelWithText(instance=instance, tag=cloud.ID, text=cloud, x=0, y=0)
 
-    #Floor Hub
+    #Populate Floor Hub
     xfloorposition= 50
     yfloorposition = 20
     for floor in range(1, FLOORHUB+1):
@@ -46,7 +47,7 @@ def Start(instance):
         devices.append(floorhub)
         standard.AddLabelWithText(instance=instance, tag=floorhub.ID, text=floorhub, x=xfloorposition, y=yfloorposition)
         
-        #Room Hub
+        #Populate Room Hub
         xroomposition = xfloorposition + 50
         yroomposition = yfloorposition + 20
         for room in range(1, ROOMHUB+1):
@@ -54,7 +55,7 @@ def Start(instance):
             devices.append(roomhub)
             standard.AddLabelWithText(instance=instance, tag=roomhub.ID, text=roomhub, x=xroomposition, y=yroomposition)
             
-            #Lightbulb
+            #Populate Lightbulb
             xlightposition = xroomposition + 50
             ylightposition = yroomposition + 20
             for light in range(1, LIGHTBULB+1):
@@ -63,9 +64,7 @@ def Start(instance):
                 standard.AddLabelWithText(instance=instance, tag=lightbulb.ID, text=lightbulb, x=xlightposition, y=ylightposition)
                 
                 ylightposition += 20
-            # yroomposition += 100
             yroomposition = ylightposition
-        # yfloorposition += 200
         yfloorposition = yroomposition
     
     standard.UpdateTextByTag(
@@ -79,7 +78,7 @@ def Start(instance):
         x=850,
         y=850
     )
-    
+
 # Runs every SCHEDULETIMER seconds
 def Loop(instance):
     global devices

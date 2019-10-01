@@ -27,6 +27,7 @@ class App:
     def __init__(self, account = "test"):
         self.__Account = account
         self.__Root = Tk()
+        self.__Root.title("Mobile App/Web Interface simulator")
 
         self.__FloorValue = IntVar(self.__Root)
         self.__RoomValue = IntVar(self.__Root)

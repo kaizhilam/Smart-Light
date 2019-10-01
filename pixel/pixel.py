@@ -91,6 +91,7 @@ class Pixel:
         """Setup initial tkinter"""
         standard.Log("Setting up Tkinter GUI...")
         self.__Root = Tk()
+        self.__Root.title("Building simulator")
         self.__ScreenWidth = self.__Root.winfo_screenwidth()
         self.__ScreenHeight = self.__Root.winfo_screenheight()
         self.__Root.geometry(str(self.__Configuration["pixel.pixel"]["screen width"])+"x"+str(self.__Configuration["pixel.pixel"]["screen height"]))

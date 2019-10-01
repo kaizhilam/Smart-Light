@@ -16,6 +16,7 @@ class Switch:
 
     def __init__(self, connect = "LightBulb1"):
         self.__Root = Tk()
+        self.__Root.title("Switch")
 
         self.__ConnectValue = StringVar(self.__Root)
         self.__ConnectValue.set(connect)
